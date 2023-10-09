@@ -13,6 +13,9 @@ class ProductsViewController: UIViewController {
 
     @IBOutlet weak var productTableView : UITableView!
     
+    @IBOutlet weak var addBtn: UIBarButtonItem!
+    
+    
     private var viewModel = ProductsViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +25,10 @@ class ProductsViewController: UIViewController {
 
     }
 
+    @IBAction func addBtnAction(_ sender: Any) {
+        viewModel.addProduct(product: ["title":"Vidhikaaa"])
+    }
+    
 }
 
 
@@ -42,19 +49,29 @@ extension ProductsViewController {
             
             switch event {
             case .loading:
-                print("start loading")
-                break
+                DispatchQueue.main.async {
+                    self?.view.activityStartAnimating()
+                }
+               break
             case .dataLoaded:
                 DispatchQueue.main.async {
                     self?.productTableView.reloadData()
                 }
                 break
             case .stopLoading:
-                print("stop loading")
+                DispatchQueue.main.async {
+                    self?.view.activityStopAnimating()
+                }
                 break
+            case .addProduct:
+                DispatchQueue.main.async {
+                    //add toast
+                    print(self?.viewModel.productAdded)
+                }
             case .error(let error):
                 print("error --> \(String(describing: error))")
                 break
+            
             }
         }
     }

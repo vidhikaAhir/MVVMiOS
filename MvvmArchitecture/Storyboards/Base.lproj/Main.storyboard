@@ -34,8 +34,15 @@
                             <constraint firstItem="mbX-gk-OFW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="QOX-ND-1tc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Products" id="Nh7-vz-Ny2"/>
+                    <navigationItem key="navigationItem" title="Products" id="Nh7-vz-Ny2">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ro4-oY-jWg">
+                            <connections>
+                                <action selector="addBtnAction:" destination="BYZ-38-t0r" id="Ej6-Ox-gXu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addBtn" destination="Ro4-oY-jWg" id="O2h-eA-Wiy"/>
                         <outlet property="productTableView" destination="mbX-gk-OFW" id="fKc-T1-kgr"/>
                     </connections>
                 </viewController>

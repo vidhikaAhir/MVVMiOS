@@ -6,10 +6,18 @@
 //
 
 import Foundation
+import UIKit
 
 
 class Constants {
+    
+    static let shared = Constants()
+    
+    private init(){}
+    
     enum API {
         static let productURL = "https://fakestoreapi.com/products";
     }
+    
+    
 }
